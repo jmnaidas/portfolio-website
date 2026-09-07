@@ -1,0 +1,23 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+
+# Generated declarations, caches, and local tooling
+next-env.d.ts
+.vercel/
+.cache/
+.turbo/
+.pnpm-store/
+coverage/
+tmp/
+temp/
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
