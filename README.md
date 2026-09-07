@@ -1,6 +1,6 @@
 # John Marie Naidas — Portfolio
 
-Local-only Next.js App Router portfolio with React, strict TypeScript, Tailwind CSS, Motion, Three.js, React Three Fiber, and Drei. No deployment or Git operations have been performed.
+Next.js App Router portfolio with React, strict TypeScript, Tailwind CSS, Motion, Three.js, React Three Fiber, and Drei. Existing production site: https://johnmarienaidas.vercel.app/.
 
 ## Run
 
@@ -24,7 +24,9 @@ Open http://localhost:3000. Production checks: `pnpm lint`, `pnpm typecheck`, `p
 
 ## Before eventual publishing
 
-Set `NEXT_PUBLIC_SITE_URL` to the actual HTTPS origin to enable canonical metadata. Leave it unset locally. Configure a server email adapter only if desired. A résumé link is intentionally omitted until a public PDF is supplied and approved. Independent work contains no fictional projects. Confirm career dates and availability remain current before publication.
+`lib/site.ts` defaults to the existing production origin. Set `NEXT_PUBLIC_SITE_URL` only to override it (for example, after moving to a custom domain). Canonical, Open Graph, sitemap, and robots metadata share this configuration. Contact intentionally uses an email draft without a backend. A résumé link is omitted until a public PDF is supplied and approved. Independent work contains no fictional projects. Confirm career dates and availability remain current before publication.
+
+The 1200 × 630 social preview (`app/opengraph-image.tsx`) and 180 × 180 Apple icon (`app/apple-icon.tsx`) are generated as static PNGs during the build. `app/icon.svg` supplies the browser favicon. No manual asset upload or new Vercel configuration is required. If Vercel already defines `NEXT_PUBLIC_SITE_URL`, ensure it matches the public origin. Social services may cache old previews until their next refresh after an approved deployment.
 
 Compatible with standard Vercel Next.js hosting. No domain, paid service, credentials, or deployment configuration is required for local use.
 
