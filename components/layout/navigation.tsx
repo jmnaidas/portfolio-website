@@ -1,8 +1,10 @@
 'use client';
+// Shared client entry keeps intercepted dialogs in the Windows webpack manifest.
+export { ProjectModal } from '@/components/projects/project-modal';
 import { useEffect, useRef, useState } from 'react';
 import { ThemeToggle } from '@/components/ui/theme';
 const links = ['Work', 'Experience', 'About', 'Contact'];
-export function Navigation() {
+export function Navigation({ homeLinks = false }: { homeLinks?: boolean }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const menu = useRef<HTMLButtonElement>(null);
@@ -20,6 +22,6 @@ export function Navigation() {
     update(); window.addEventListener('scroll', scroll, { passive: true }); window.addEventListener('resize', scroll); window.addEventListener('keydown', escape); desktop.addEventListener('change', close);
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', scroll); window.removeEventListener('resize', scroll); window.removeEventListener('keydown', escape); desktop.removeEventListener('change', close); };
   }, []);
-  const navLinks = () => links.map(link => <a key={link} href={`#${link.toLowerCase()}`} aria-current={active === link ? 'location' : undefined} onClick={() => setOpen(false)}>{link}</a>);
-  return <header className="site-header"><nav className="container navigation" aria-label="Main navigation"><a href="#" className="brand" onClick={() => setOpen(false)}>John Marie Naidas<span className="brand-dot" /></a><div className="desktop-nav">{navLinks()}</div><div className="nav-actions"><a className="nav-cta" href="#contact">Let’s Talk <span aria-hidden="true">↗</span></a><ThemeToggle /><button ref={menu} className="menu-toggle" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? 'Close −' : 'Menu +'}</button></div><div id="mobile-nav" className="mobile-nav" hidden={!open}>{navLinks()}</div></nav></header>;
+  const navLinks = () => links.map(link => <a key={link} href={`${homeLinks ? "/" : ""}#${link.toLowerCase()}`} aria-current={active === link ? 'location' : undefined} onClick={() => setOpen(false)}>{link}</a>);
+  return <header className="site-header"><nav className="container navigation" aria-label="Main navigation"><a href={homeLinks ? "/" : "#"} className="brand" onClick={() => setOpen(false)}>John Marie Naidas<span className="brand-dot" /></a><div className="desktop-nav">{navLinks()}</div><div className="nav-actions"><a className="nav-cta" href={homeLinks ? "/#contact" : "#contact"}>Let’s Talk <span aria-hidden="true">↗</span></a><ThemeToggle /><button ref={menu} className="menu-toggle" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? 'Close −' : 'Menu +'}</button></div><div id="mobile-nav" className="mobile-nav" hidden={!open}>{navLinks()}</div></nav></header>;
 }
