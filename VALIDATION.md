@@ -104,3 +104,41 @@ This supersedes the October 30 build limitation above. Branch remains `codex/ind
 - Ready for commit and a Vercel preview, subject to reviewing the uncommitted changes. No preview deployment has been performed. Temporary review servers are stopped at completion.
 
 To review locally: use Node 24.x, run `pnpm exec next dev --webpack`, and visit http://localhost:3000/#independent. Production path: `pnpm build`, then `pnpm start`. Direct routes are /projects/kitchain, /projects/elio, and /projects/avenor. Inspect `git diff` and `git status --short` together to include the new untracked implementation files.
+
+## Portfolio V2 release review — 2026-11-04
+
+This entry supersedes the earlier showcase-only scope and build limitations. Feature branch: `codex/portfolio-v2-live-previews`, based on deployed commit `80d2fe7`. The owner authorized feature commit/push, preview verification, main integration and production deployment after passing checks.
+
+### Implementation and evidence
+
+- Added source-verified technical case studies for Kitchain, Elio and Avenor: grouped technologies, architecture, five bounded features each, current milestone, roadmap and engineering contribution. Public availability is distinguished from local implementation and planned work. See PROJECT_EVIDENCE.md for source paths and conflicting/stale documentation decisions.
+- Kitchain offers an opt-in live iframe inside the existing native dialog, with return, maximize/restore, reload help and external fallback. No iframe is mounted before launch. Standalone pages support the same opt-in preview.
+- Elio blocks framing with X-Frame-Options DENY; only its external action is offered. Its public synthetic read-only demo was exercised externally. Avenor remains local with no live action. No application repository links or fabricated media are displayed.
+- Fixed stale parallel-slot dialogs after history restoration and explicit Close after iframe joint-history navigation. Preview return destroys the iframe and restores launcher focus.
+- Selected Work, hero, enterprise data and theme implementation remain unchanged. No sibling application repository was modified.
+
+### Final validation
+
+- `pnpm lint`: passed; `pnpm typecheck`: passed; `pnpm test`: 22 passed, zero failed.
+- `pnpm build`: passed with Next.js 16.4.1, default Turbopack and Node 24. No webpack production override. Font fetch and CSS worker failures did not recur.
+- Final production server HTTP checks: homepage, all three project pages and sitemap 200; unknown project 404. Canonical URL verified after direct navigation and refresh.
+- `git diff --check`: passed (only Windows line-ending conversion notices).
+- Browser matrix: 1440, 768, 390 and 430px, both themes, all three project dialogs. Final production build repeated all 24 detail states: no horizontal overflow, body scroll locked, no premature iframe. Earlier section/preview matrix and deep case-study screenshots retained.
+- Verified real Kitchain rendering and public filter interaction in iframe, return/unmount, maximize/restore, explicit Close, Escape from portfolio controls, focus restoration, keyboard containment, related navigation, Back/Forward, direct URLs and refresh. Final production smoke repeated preview close/history and standalone mobile preview.
+- Console: existing THREE.Clock deprecation warning; no error in the final smoke flow. Chromium-based browser only; no Safari, Firefox, physical-device or full screen-reader certification.
+- Screenshots and logs: C:/Users/Jm/.codex/visualizations/2026/10/30/01a18cd6-b38b-7461-ae14-ff9030421ebd/portfolio-v2/index.html.
+
+### Dependency security assessment
+
+The original dependency audit reported critical/high advisories in the existing Next/sharp tree. Updated Next and matching eslint-config-next to exact 16.4.1, obtaining sharp 0.35.5, and applied compatible source-map-js, brace-expansion, zod and minimatch lockfile updates. No new direct dependency or unrelated major tooling upgrade was introduced.
+
+- `pnpm audit --prod`: zero known vulnerabilities.
+- Full `pnpm audit`: one moderate development-only minimatch advisory, GHSA-g3hv-75wg-m249. It concerns attacker-controlled glob patterns with optimizationLevel >= 2; the remaining packages are in ESLint tooling, outside the production dependency tree. No visitor-controlled glob input is exposed by this portfolio. Assessed nonblocking for this deployment, not described as a clean full audit. Forcing minimatch 11 over ESLint's older API was avoided; follow an upstream-compatible tooling update.
+- ESLint 9 emits an upstream deprecation notice. This is separate from runtime security and is recorded for later maintenance.
+- Relevant advisories: https://github.com/advisories/GHSA-673q-mjm6-r5xr ; https://github.com/advisories/GHSA-2464-fhr4-w9xw ; https://github.com/advisories/GHSA-wq5f-xc86-pv6w ; https://github.com/advisories/GHSA-g3hv-75wg-m249.
+
+### Browser/security limits
+
+The iframe has an exact HTTPS allowlist and restricted sandbox/permissions. No proxy, credential handling or application security changes were introduced. Cross-origin load events cannot prove successful rendering; persistent external controls and delayed reload help remain available. Escape inside the embedded application's document cannot be intercepted by the portfolio; Tab/Shift+Tab returns to persistent parent controls. Browser Back may traverse the embedded application's joint-history entries first; explicit Close exits the overlay. Authenticated cross-site flows are not claimed as supported.
+
+Remote preview and production verification are recorded in the final delivery report after this commit. Local success alone is not evidence of Vercel build success. Local review: Node 24.x, `pnpm install --frozen-lockfile`, `pnpm build`, `pnpm start`; visit `/`, `/projects/kitchain`, `/projects/elio` and `/projects/avenor`.

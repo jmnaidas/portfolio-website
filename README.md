@@ -40,9 +40,13 @@ Run `node --test tests/theme.test.mjs` for theme preference and fallback checks.
 
 ## Independent project showcase
 
-Independent Work now uses `data/projects.ts` for Kitchain, Elio, and Avenor. Add a project there to populate cards, related links, static page generation, and the sitemap. Optional verified feature, technology, and architecture lists render only when supplied. This first version deliberately uses no screenshots or repository buttons.
+Independent Work uses `data/projects.ts` for Kitchain, Elio, and Avenor. Add a project there to populate cards, related links, static page generation, and the sitemap. Typed technology groups, architecture highlights, feature availability, milestones, roadmaps, and contribution statements populate reusable technical case studies. Content provenance and documented discrepancies are recorded in PROJECT_EVIDENCE.md. No application repository buttons or fictional screenshots are shown.
 
-Homepage links open `app/@modal/(.)projects/[slug]`; direct navigation and refresh use `app/projects/[slug]`. The native dialog handles keyboard containment and background inertness, while the component locks scrolling and restores focus. Related links in a modal replace the current history entry so Close returns to the portfolio. Root and catch-all null slot pages prevent stale overlays.
+Homepage links open `app/@modal/(.)projects/[slug]`; direct navigation and refresh use `app/projects/[slug]`. The native dialog handles keyboard containment and background inertness, while the component locks scrolling and restores focus. Related links in a modal replace the current history entry. Root/catch-all null slots and a pathname guard prevent stale overlays.
+
+Kitchain's Launch live preview transitions the same dialog to a responsive application frame; standalone pages open a preview dialog on demand. Return restores the detail scroll position and launcher focus. Maximize, Close, reload help, and Open externally remain available. Exact URL allowlisting and a restricted sandbox prevent arbitrary iframe sources and top-level navigation. Elio's deployed X-Frame-Options=DENY and first-party authentication boundary require an external fallback. Avenor has no public URL. No application repository or security policy was changed.
+
+Iframe navigation participates in browser history. Explicit Close exits even after application navigation; Back may first traverse the application's own entries. Escape works from portfolio controls; cross-origin application key events do not propagate, so Tab back to the persistent preview controls when needed. The application has its own theme. Frame load events cannot prove rendering success; actual browser interaction is part of release validation.
 
 The dialog is re-exported through the existing navigation client entry to avoid an observed Windows webpack client-manifest failure for the intercepted route. Its implementation remains isolated in `components/projects/project-modal.tsx`.
 

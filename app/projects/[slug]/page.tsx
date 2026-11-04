@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProject, projects } from '@/data/projects';
 import { ProjectDetail } from '@/components/projects/project-detail';
-import { Navigation } from '@/components/layout/navigation';
+import { Navigation, ProjectModal } from '@/components/layout/navigation';
 
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() { return projects.map(({ slug }) => ({ slug })); }
@@ -21,6 +21,6 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
   return <><Navigation homeLinks /><main id="main" className="container project-page">
     <Link className="project-back" href="/#independent">← Back to independent work</Link>
-    <ProjectDetail project={project} />
+    <ProjectModal key={project.slug} project={project} modal={false}><ProjectDetail project={project} /></ProjectModal>
   </main></>;
 }

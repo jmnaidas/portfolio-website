@@ -345,3 +345,38 @@ h3{font-size:1.45rem;letter-spacing:-.035em;line-height:1.3}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:1000px){.project-grid{grid-template-columns:1fr}.project-index{margin-bottom:24px}.project-category{min-height:0}}
 @media(max-width:767px){.project-card{padding:25px}.project-detail-grid{grid-template-columns:1fr;gap:24px}.project-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}.project-dialog .project-detail{padding:12px 24px 28px}.project-dialog-toolbar{padding:12px 20px}.project-detail .eyebrow{font-size:.6rem}.project-related{gap:18px}.project-related>span{width:100%}.project-page{padding-top:20px}.project-back{margin-bottom:28px}}
+
+/* Technical case studies and user-triggered application previews. */
+.project-extra{margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.project-extra>.eyebrow{margin-bottom:16px;font-size:.6rem}
+.project-detail h3{font-size:.85rem;font-weight:500;letter-spacing:0;margin:0 0 10px}
+.project-stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:22px}
+.project-stack .tags{margin-top:0;flex-wrap:wrap}
+.project-stack .tags span{font-size:.7rem}
+.project-architecture{margin:0;display:grid;gap:20px}
+.project-architecture dt{font-size:.9rem;margin-bottom:6px}
+.project-architecture dd{margin:0;color:var(--secondary-text);font-size:.85rem;line-height:1.8}
+.project-features{list-style:none;padding:0;margin:18px 0 0}
+.project-features li{padding:20px 0;border-top:1px solid var(--line)}
+.project-features li>div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.project-state{font-size:.65rem;color:var(--accent-muted);line-height:1.7}
+.project-detail .project-note,.project-note{font-size:.75rem;color:var(--muted);line-height:1.7;max-width:70ch}
+.project-detail .project-caveat{border-left:2px solid var(--accent-muted);padding-left:16px;margin-top:18px;font-size:.8rem}
+.project-roadmap-title{margin-top:28px!important}
+.project-roadmap{list-style:none;margin:20px 0 0 5px;padding:0 0 0 22px;border-left:1px solid var(--line)}
+.project-roadmap li{position:relative;padding:0 0 24px}
+.project-roadmap li::before{content:'';position:absolute;width:7px;height:7px;background:var(--accent-muted);left:-26px;top:7px;border-radius:50%}
+.project-roadmap h3{margin-top:5px}.project-roadmap li:last-child{padding-bottom:0}
+.project-actions>div{display:flex;gap:12px;flex-wrap:wrap}.project-actions .project-note{margin-top:14px}
+.project-dialog-preview{width:calc(100% - 48px);max-width:1440px;height:calc(100dvh - 48px);overflow:hidden;display:none;flex-direction:column}
+.project-dialog-preview[open]{display:flex}
+.project-dialog-expanded{width:100%;max-width:none;height:100dvh;max-height:100dvh;border:0}
+.project-dialog-preview .project-dialog-toolbar{flex:none;padding-block:8px;border-bottom:1px solid var(--line)}
+.live-preview{display:flex;flex-direction:column;min-height:0;flex:1}
+.preview-controls{display:flex;align-items:center;gap:16px;padding:12px 24px;flex-wrap:wrap}
+.preview-controls>div{margin-right:auto}.preview-controls h2{font-size:1rem;margin:0}
+.preview-controls button,.preview-controls a,.preview-notice button{font-size:.75rem;min-height:44px;padding:8px 12px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.preview-notice{font-size:.7rem;line-height:1.6;padding:8px 24px;color:var(--secondary-text);background:var(--surface)}
+.preview-notice button{margin-left:12px;min-height:32px}
+.live-preview iframe{display:block;width:100%;min-height:0;flex:1;border:0;background:#fff}
+@media(max-width:767px){.project-stack{grid-template-columns:1fr}.project-dialog-preview{width:100%;height:100dvh;max-height:100dvh;border:0}.preview-controls{padding:8px 12px;gap:8px}.preview-controls>div{order:-1;width:100%;display:flex;align-items:center;gap:12px}.preview-controls button,.preview-controls a{padding:8px;font-size:.7rem}.preview-notice{padding:8px 12px}.project-extra{margin-top:30px}.project-features li>div{gap:2px}.project-features h3{margin-bottom:4px}}
