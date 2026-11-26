@@ -142,3 +142,15 @@ The original dependency audit reported critical/high advisories in the existing 
 The iframe has an exact HTTPS allowlist and restricted sandbox/permissions. No proxy, credential handling or application security changes were introduced. Cross-origin load events cannot prove successful rendering; persistent external controls and delayed reload help remain available. Escape inside the embedded application's document cannot be intercepted by the portfolio; Tab/Shift+Tab returns to persistent parent controls. Browser Back may traverse the embedded application's joint-history entries first; explicit Close exits the overlay. Authenticated cross-site flows are not claimed as supported.
 
 Remote preview and production verification are recorded in the final delivery report after this commit. Local success alone is not evidence of Vercel build success. Local review: Node 24.x, `pnpm install --frozen-lockfile`, `pnpm build`, `pnpm start`; visit `/`, `/projects/kitchain`, `/projects/elio` and `/projects/avenor`.
+
+## November 26, 2026 release validation
+
+- Portfolio content updated for Kitchain G5C and Avenor local M3/M4 acceptance, preserving the existing design and preview boundaries.
+- Next.js and matching eslint-config-next patched from 16.4.1 to 16.4.5 to address production dependency advisories. `pnpm audit --prod` reports no known vulnerabilities.
+- The patch's strict parallel-route validation exposed a missing implicit children fallback. Added `app/default.tsx` calling `notFound()`, following the installed Next.js documentation; no deprecated loose-routing override.
+- Local default Turbopack build encountered Google Fonts network failure under restricted execution, then a Windows CSS-worker process-connection failure with network access. These are recorded separately from webpack and hosted build results; neither is treated as proof that Vercel succeeds or fails.
+- Kitchain frontend: lint passed, 251 tests passed in 19 files, production build passed. No standalone typecheck script; Angular production compilation checks TypeScript.
+- Kitchain backend: Release build passed (three existing xUnit analyzer warnings). Full PostgreSQL-backed suite: 497 passed, six failed, zero skipped (503 total). All 171 Gear tests passed. All six failures reproduce on deployed baseline `5b317de` in an isolated temporary source snapshot: three PlayRoster assertions, two PlayRotationMigrationVerification checks, and the PlayRally removal/confirmation assertion. Play source and migrations are unchanged in this Gear release. These are pre-existing unresolved issues, not a clean full test suite.
+- Only three Kitchain Gear lint fixes were added: strict null/undefined template guards and an interface declaration. Untracked catalog research was not staged or published. Avenor source and its working tree were not changed.
+
+Hosted deployment verification and final browser observations will be recorded in the delivery report. Earlier November 4 results above describe that release, not an automatic pass for the November 26 release.

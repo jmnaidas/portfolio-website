@@ -54,3 +54,12 @@ No live URL or preview action. No model run, benchmark freeze, sending, producti
 - Kitchain is unauthenticated for the exercised public flow. No claim is made about third-party authenticated sessions, OAuth, Safari/Firefox, or physical mobile devices.
 
 Browser behavior references: [MDN iframe events and sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe), [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy).
+
+## November 26, 2026 release update
+
+This section supersedes the earlier milestone descriptions above.
+
+- Kitchain inspected through `10b2099` (G5C), released with three lint-only fixes in `6ad03ec`. G5A/G5B implement deterministic PaddleMatch ranking and evidence explanations; G5C replaces detail fan-out with bounded cursor-paginated recommendation projections. Source: Gear controller/application queries, Angular Gear routes/components, and G5 acceptance documentation. G5D real catalog preparation is incomplete pending source clearance; untracked research data and its draft documentation were excluded from publication. No new database migration is included.
+- Avenor inspected through local `bacba1a`, including README and roadmap updated November 26, CalendarService, BriefingScheduler and BriefingEmailTransport. M3 read-only Calendar and M4A–M4D deterministic Briefings are documented CLOSED/PASS locally. Scheduling and Preview delivery are implemented; SMTP is disabled by default and live provider delivery/inbox receipt remain unverified. M2 quality remains FAIL, real replies remain simulated, and Telegram remains future work. User explicitly requested keeping Avenor local. Its repository and unpublished experiments were left untouched.
+- Elio remains unchanged at `850dabe`; no new deployment is needed for this release.
+- Feature implementation labels remain conservative where a populated end-to-end production flow has not been exercised. Deployment availability is distinct from complete feature acceptance.
